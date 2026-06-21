@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H E C K A</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <video autoplay loop muted playsinline id="video-bg"></video>
+    <div class="bg-overlay"></div>
+
+    <div id="overlay" onclick="entrarNoSite()">
+        <p data-i18n="overlay">[ CLICK TO ENTER ]</p>
+    </div>
+
+    <audio id="audio-element" onended="proximaMusica()"></audio>
+
+    <div class="music-player">
+        <img id="track-cover" src="" alt="Capa">
+        
+        <div class="player-content">
+            <div class="track-info">
+                <span id="track-name" data-i18n="trackName">Song Name</span>
+                <span id="track-artist" data-i18n="trackArtist">Artist</span>
+            </div>
+            
+            <div class="player-controls-row">
+                <div class="player-controls">
+                    <button onclick="musicaAnterior()"><i class="fas fa-step-backward"></i></button>
+                    <button id="play-btn" onclick="togglePlay()"><i class="fas fa-pause"></i></button>
+                    <button onclick="proximaMusica()"><i class="fas fa-step-forward"></i></button>
+                </div>
+
+                <div class="volume-container">
+                    <i class="fas fa-volume-up" id="volume-icon" onclick="toggleMute()"></i>
+                    <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.01" value="0.5" oninput="ajustarVolume(this.value)">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <img class="profile-img" src="https://cdn.discordapp.com/avatars/817378339228221440/64e5b32dd4e75d1137a77ba93243f7df" alt="Perfil">
+        <div class="username">H3CKE5</div>
+
+        <div class="links-wrapper">
+            <a href="https://www.tiktok.com/@h3cke5" target="_blank" class="link-btn">TikTok</a>
+            <a href="https://discord.com/users/817378339228221440" target="_blank" class="link-btn" data-i18n="contact">Contact</a>
+            <a href="https://www.kugooescooters.com/?ref=h3cke5" target="_blank" class="link-btn">Kukirin Web</a>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://discord.com/users/817378339228221440" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="https://www.twitch.tv/h3cke5" target="_blank"><i class="fab fa-twitch"></i></a>
+            <a href="https://x.com/h3cke5" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/h3cke" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
