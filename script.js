@@ -20,18 +20,33 @@ const traducoes = {
         overlay: "[ CLIQUE PARA ENTRAR ]",
         trackName: "Nome Da Música",
         trackArtist: "Artista",
-        contact: "Contato"
+        linkOotd: "OOTD (HCKE FOR 10€)",
+        linkKukirin: "Kukirin Web",
+        linkGithub: "Github",
+        contact: "Contato",
+        footerCopy: "© 2025 HECKA. Todos os direitos reservados.",
+        shareTitle: "Compartilhar Link",
+        shareDesc: "Scaneie o QR ou use os botões abaixo",
+        copied: "Copiado!"
     },
     en: {
         overlay: "[ CLICK TO ENTER ]",
         trackName: "Song Name",
         trackArtist: "Artist",
-        contact: "Contact"
+        linkOotd: "OOTD (HCKE FOR 10€)",
+        linkKukirin: "Kukirin Web",
+        linkGithub: "Github",
+        contact: "Contact",
+        footerCopy: "© 2025 HECKA. All rights reserved.",
+        shareTitle: "Share Link",
+        shareDesc: "Scan the QR or use the buttons below",
+        copied: "Copied!"
     }
 };
 
 let indexAtual = 0;
 let volumeAnterior = 0.5;
+let urlAtivaDoModal = "";
 
 const overlay = document.getElementById('overlay');
 const audio = document.getElementById('audio-element');
@@ -45,7 +60,6 @@ const videoBg = document.getElementById('video-bg');
 
 function definirIdioma() {
     const idiomaNavegador = navigator.language || navigator.userLanguage;
-    
     const idioma = idiomaNavegador.startsWith('pt') ? 'pt' : 'en';
     
     document.documentElement.lang = idioma === 'pt' ? 'pt-BR' : 'en';
@@ -154,3 +168,48 @@ function atualizarIconeVolume(valor) {
         volumeIcon.className = "fas fa-volume-up";
     }
 }
+
+// --- INTEGRAÇÃO DO MODAL DE COMPARTILHAMENTO ---
+function openModal(url) {
+    urlAtivaDoModal = url;
+    const qrOverlay = document.getElementById('qrOverlay');
+    const qrImage = document.getElementById('qrImage');
+    
+    qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(url)}`;
+    
+    qrOverlay.style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('qrOverlay').style.display = 'none';
+}
+
+document.getElementById('copyBtn').addEventListener('click', () => {
+    if(urlAtivaDoModal) {
+        navigator.clipboard.writeText(urlAtivaDoModal).then(() => {
+            const idiomaNavegador = navigator.language || navigator.userLanguage;
+            const idioma = idiomaNavegador.startsWith('pt') ? 'pt' : 'en';
+            alert(traducoes[idioma].copied);
+        });
+    }
+});
+
+document.getElementById('shareBtn').addEventListener('click', () => {
+    if (navigator.share && urlAtivaDoModal) {
+        navigator.share({ title: 'H3CKE5 Link', url: urlAtivaDoModal }).catch(console.error);
+    } else {
+        alert(urlAtivaDoModal);
+    }
+});
+
+document.getElementById('downloadBtn').addEventListener('click', () => {
+    if(urlAtivaDoModal) {
+        const qrImageSrc = document.getElementById('qrImage').src;
+        const a = document.createElement('a');
+        a.href = qrImageSrc;
+        a.download = 'qrcode.png';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+});
