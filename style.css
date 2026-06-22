@@ -233,6 +233,38 @@ body {
     margin-bottom: 25px;
 }
 
+/* --- ADICIONADO: LINHA DO BOTÃO DE TRÊS PONTOS --- */
+.link-card-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.link-card-row .link-btn {
+    flex-grow: 1;
+    padding-right: 44px; /* Libera espaço para o ⋮ não ficar em cima do texto */
+}
+
+.qr-trigger-btn {
+    position: absolute;
+    right: 14px;
+    background: none;
+    border: none;
+    color: #a3a3c2;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: color 0.2s;
+}
+
+.qr-trigger-btn:hover {
+    color: #ffffff;
+}
+
 .link-btn {
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -242,6 +274,8 @@ body {
     border-radius: 8px;
     font-size: 0.95rem;
     transition: all 0.3s ease;
+    text-align: center;
+    padding-left: 18px;
 }
 
 .link-btn:hover {
@@ -271,4 +305,113 @@ body {
 @keyframes pulse {
     0%, 100% { opacity: 0.4; }
     50% { opacity: 1; }
+}
+
+/* --- ESTILOS DO MODAL COMPARTILHAR LINK (IGUAL À SUA IMAGEM) --- */
+.qr-modal-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none; /* Controlado via JS */
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.qr-box {
+    background: rgba(30, 30, 35, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    width: 330px;
+    border-radius: 20px;
+    padding: 24px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.qr-box h2 {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.qr-box p {
+    font-size: 0.85rem;
+    color: #a3a3c2;
+    margin-bottom: 16px;
+}
+
+.qr-inner {
+    background: rgba(45, 45, 50, 0.8);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 18px;
+    display: inline-block;
+}
+
+.qr-img {
+    width: 180px;
+    height: 180px;
+    display: block;
+    border-radius: 8px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.actions button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.actions button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.close-btn {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #a3a3c2;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #fff;
+}
+
+.main-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 15px;
+    margin-top: 20px; 
+}
+
+.main-footer p {
+    font-size: 0.75rem;
+    color: #75758a;
+    letter-spacing: 0.5px;
 }
