@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H E C K A</title>
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/avatars/817378339228221440/64e5b32dd4e75d1137a77ba93243f7df">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -47,16 +49,64 @@
         <div class="username">H3CKE5</div>
 
         <div class="links-wrapper">
-            <a href="https://www.tiktok.com/@h3cke5" target="_blank" class="link-btn">TikTok</a>
-            <a href="https://discord.com/users/817378339228221440" target="_blank" class="link-btn" data-i18n="contact">Contact</a>
-            <a href="https://www.kugooescooters.com/?ref=h3cke5" target="_blank" class="link-btn">Kukirin Web</a>
+            <div class="link-card-row">
+                <a href="https://o-otd.com/h3cke5" target="_blank" class="link-btn">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <span data-i18n="linkOotd">OOTD (HCKE FOR 10€)</span>
+                </a>
+                <button class="qr-trigger-btn" onclick="openModal('https://o-otd.com/h3cke5')">⋮</button>
+            </div>
+            <div class="link-card-row">
+                <a href="https://www.kugooescooters.com/?ref=h3cke5" target="_blank" class="link-btn">
+                    <i class="fa-solid fa-globe"></i>
+                    <span data-i18n="linkKukirin">Kukirin Web</span>
+                </a>
+                <button class="qr-trigger-btn" onclick="openModal('https://www.kugooescooters.com/?ref=h3cke5')">⋮</button>
+            </div>
+            <div class="link-card-row">
+                <a href="https://github.com/h3cke5" target="_blank" class="link-btn">
+                    <i class="fa-brands fa-github"></i>
+                    <span data-i18n="linkGithub">Github</span>
+                </a>
+                <button class="qr-trigger-btn" onclick="openModal('https://github.com/h3cke5')">⋮</button>
+            </div>
+            <div class="link-card-row">
+                <a href="https://discord.com/users/817378339228221440" target="_blank" class="link-btn">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span data-i18n="contact">Contact</span>
+                </a>
+                <button class="qr-trigger-btn" onclick="openModal('https://discord.com/users/817378339228221440')">⋮</button>
+            </div>
         </div>
 
         <div class="social-icons">
+            <a href="https://www.tiktok.com/@h3cke5" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
             <a href="https://discord.com/users/817378339228221440" target="_blank"><i class="fab fa-discord"></i></a>
             <a href="https://www.twitch.tv/h3cke5" target="_blank"><i class="fab fa-twitch"></i></a>
             <a href="https://x.com/h3cke5" target="_blank"><i class="fab fa-twitter"></i></a>
             <a href="https://www.instagram.com/h3cke" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <footer class="main-footer">
+            <p><span data-i18n="footerCopy">© 2025 HECKA. All rights reserved.</span></p>
+        </footer>
+    </div>
+
+    <div id="qrOverlay" class="qr-modal-overlay" onclick="closeModal()">
+        <div class="qr-box" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">✖</button>
+            <h2 data-i18n="shareTitle">Share Link</h2>
+            <p data-i18n="shareDesc">Scan the QR or use the buttons below.</p>
+
+            <div class="qr-inner">
+                <img id="qrImage" src="" alt="QR Code" class="qr-img">
+            </div>
+
+            <div class="actions">
+                <button id="shareBtn" title="Share">🔗</button>
+                <button id="copyBtn" title="Copy">📋</button>
+                <button id="downloadBtn" title="Download">⬇️</button>
+            </div>
         </div>
     </div>
 
